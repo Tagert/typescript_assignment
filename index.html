@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>Vite additional practice</title>
+  </head>
+  <body>
+    <header></header>
+    <main class="main-section">
+      <div class="animal-form">
+        <h2>Provide the details of the new animal that you want to insert.</h2>
+
+        <div class="name-input inputs">
+          <label for="animal-name">Name:</label>
+          <input
+            id="animal-name"
+            type="text"
+            placeholder="Animal name..."
+            required
+          />
+        </div>
+
+        <div class="age-input inputs">
+          <label for="animal-age">Age:</label>
+          <input
+            id="animal-age"
+            type="number"
+            placeholder="Animal age..."
+            required
+          />
+        </div>
+
+        <div class="animal-selector selectors">
+          <label for="animal-type">Group: </label>
+          <select id="animal-type" name="animal-type">
+            <option value="jump-run">Jump and Run</option>
+            <option value="sleep-walk">Sleep and Walk</option>
+            <option value="swim-hunt">Swim and Hunt</option>
+          </select>
+        </div>
+
+        <div class="active-jump-run">
+          <div class="inputs">
+            <label for="animal-max-speed">Max Speed:</label>
+            <input
+              id="animal-max-speed"
+              type="number"
+              placeholder="Max speed km/h..."
+              required
+            />
+          </div>
+
+          <div class="inputs">
+            <label for="animal-origin">Origin:</label>
+            <input
+              id="animal-origin"
+              type="text"
+              placeholder="Country..."
+              required
+            />
+          </div>
+        </div>
+
+        <div class="active-sleep-walk inputs">
+          <label for="animal-weight">Weight:</label>
+          <input
+            id="animal-weight"
+            type="number"
+            placeholder="Weight kg..."
+            required
+          />
+        </div>
+
+        <div class="active-swim-hunt"></div>
+
+        <div class="add-animal">
+          <button id="animal-btn">Add an Animal</button>
+          <button id="log-animal-btn">Log all animals</button>
+        </div>
+      </div>
+
+      <div class="employee-form">
+        <div class="employee-content">
+          <h2>
+            Provide the details of the new employee that you want to hire.
+          </h2>
+
+          <div class="employee-occupation-input inputs">
+            <label for="employee-occupation">Occupation:</label>
+            <input
+              id="employee-occupation"
+              type="Text"
+              placeholder="Zookeeper"
+              required
+            />
+          </div>
+
+          <div class="employee-zoo-checkbox">
+            <label for="employee-zoo">Documents are signed at Zoo:</label>
+            <input id="employee-zoo" type="checkbox" required />
+          </div>
+
+          <div class="employee-safety-checkbox">
+            <label for="employee-safety">Safety training is completed:</label>
+            <input id="employee-safety" type="checkbox" required />
+          </div>
+
+          <div class="employee-date-input inputs">
+            <label for="employee-date"
+              >Date of completed safety training:</label
+            >
+            <input
+              id="employee-date"
+              type="Text"
+              placeholder="year-month-day"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="add-employee">
+          <button id="employee-btn">Add a new employee</button>
+          <button id="log-employee-btn">Log all animals</button>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
