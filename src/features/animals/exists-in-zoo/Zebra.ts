@@ -1,5 +1,5 @@
-import { Animal } from "./Animal";
-import { ZebraType } from "./animal.types";
+import { Animal } from "../Animal";
+import { ZebraType } from "../animal.types";
 // import { JumpRunAnimal } from "./groups-animals/JumpRunAnimal";
 
 export class Zebra extends Animal {

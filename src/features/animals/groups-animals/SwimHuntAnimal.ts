@@ -1,9 +1,12 @@
 import { Animal } from "../Animal";
-import { AnimalType } from "../animal.types";
+import { TigerType } from "../animal.types";
 
 export class SwimHuntAnimal extends Animal {
-  constructor({ name, age }: AnimalType) {
+  statusMoreThan8Hours: boolean = false;
+
+  constructor({ name, age, statusMoreThan8Hours }: TigerType) {
     super({ name, age });
+    this.statusMoreThan8Hours = statusMoreThan8Hours;
   }
 
   makeSound(): void {

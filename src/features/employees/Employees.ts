@@ -11,10 +11,6 @@ export class Employees {
     this.employees.push(employee);
   }
 
-  //   getEmployees(): Employee[] {
-  //     return this.employees;
-  //   }
-
   getAllEmployees(): Employee[] {
     return this.employees;
   }

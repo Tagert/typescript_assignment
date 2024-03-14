@@ -1,5 +1,5 @@
-import { Animal } from "./Animal";
-import { ElephantType } from "./animal.types";
+import { Animal } from "../Animal";
+import { ElephantType } from "../animal.types";
 
 export class Elephant extends Animal {
   weight: number;

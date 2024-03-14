@@ -1,5 +1,5 @@
-import { Animal } from "./Animal";
-import { TigerType } from "./animal.types";
+import { Animal } from "../Animal";
+import { TigerType } from "../animal.types";
 // import { SwimHuntAnimal } from "./groups-animals/SwimHuntAnimal";
 
 export class Tiger extends Animal {

@@ -1,116 +1,86 @@
-import { Animals } from "./features/animals/Animals";
-import { JumpRunAnimal } from "./features/animals/groups-animals/JumpRunAnimal";
-import { SleepWalkAnimal } from "./features/animals/groups-animals/SleepWalkAnimal";
-import { SwimHuntAnimal } from "./features/animals/groups-animals/SwimHuntAnimal";
-import { Employees } from "./features/employees/Employees";
-import { Zookeeper } from "./features/employees/zookeeper/Zookeeper";
+import { Animal } from "./features/animals/Animal";
+
+import { Zebra } from "./features/animals/exists-in-zoo/Zebra";
+import { Elephant } from "./features/animals/exists-in-zoo/Elephant";
+import { Tiger } from "./features/animals/exists-in-zoo/Tiger";
+
+import { addAnimalForm, animals } from "./utils/addAnimal";
+import { addEmployeeForm, employees } from "./utils/addEmployee";
+
 import { handleDisplay } from "./utils/dom";
+import { Zookeeper } from "./features/employees/zookeeper/Zookeeper";
+
+import { Logger } from "./utils/Logger";
+import { Employee } from "./features/employees/Employee";
 
 const addAnimalButton = document.getElementById(
   "animal-btn",
 ) as HTMLButtonElement;
-
 const addEmployeeButton = document.getElementById(
   "employee-btn",
 ) as HTMLButtonElement;
 
-const typeSelect = document.getElementById("animal-type") as HTMLSelectElement;
+const logAnimalButton = document.getElementById(
+  "log-animal-btn",
+) as HTMLButtonElement;
+const logEmployeeButton = document.getElementById(
+  "log-employee-btn",
+) as HTMLButtonElement;
 
-const animals = new Animals();
-const employees = new Employees();
+export const typeSelect = document.getElementById(
+  "animal-type",
+) as HTMLSelectElement;
 
-export function addAnimalForm(event: Event) {
-  event.preventDefault();
+const zebra = new Zebra({
+  name: "Zebra",
+  age: 5,
+  maxSpeed: 40,
+  origin: "Africa",
+});
+const elephant = new Elephant({ name: "Elephant", age: 10, weight: 4500 });
+const tiger = new Tiger({ name: "Tiger", age: 6, statusMoreThan8Hours: false });
 
-  const nameInput = document.getElementById("animal-name") as HTMLInputElement;
-  const ageInput = document.getElementById("animal-age") as HTMLInputElement;
-  const maxSpeedInput = document.getElementById(
-    "animal-max-speed",
-  ) as HTMLInputElement;
-  const originInput = document.getElementById(
-    "animal-origin",
-  ) as HTMLInputElement;
-  const weightInput = document.getElementById(
-    "animal-weight",
-  ) as HTMLInputElement;
+export const existsAnimals: Animal[] = [zebra, elephant, tiger];
 
-  const name = nameInput.value;
-  const age = Number(ageInput.value);
-  const maxSpeed = Number(maxSpeedInput.value);
-  const origin = originInput.value;
-  const weight = Number(weightInput.value);
+console.log(existsAnimals);
 
-  const animalType = typeSelect.value;
+export const zooKeeper = new Zookeeper({
+  employeeOccupation: "Zookeeper",
+  isEmployeeAtZoo: true,
+  safetyTrainingCompletion: true,
+  safetyTrainingCompletionDate: "2008-08-10",
+});
 
-  let newAnimal: JumpRunAnimal | SleepWalkAnimal | SwimHuntAnimal | null = null;
+export const existsEmployees: Employee[] = [zooKeeper];
 
-  if (animalType === "jump-run") {
-    newAnimal = new JumpRunAnimal({ name, age, maxSpeed, origin });
-  } else if (animalType === "sleep-walk") {
-    newAnimal = new SleepWalkAnimal({ name, age, weight });
-  } else if (animalType === "swim-hunt") {
-    newAnimal = new SwimHuntAnimal({ name, age });
-  } else {
-    console.error("Invalid animal group selected");
-  }
+console.log(existsEmployees);
 
-  if (newAnimal !== null) {
-    animals.addAnimal(newAnimal);
+zooKeeper.feedAnimal(tiger);
 
-    console.log("New animal added:", newAnimal);
-    console.log(animals.getAllAnimals());
-  }
-
-  nameInput.value = "";
-  ageInput.value = "";
-  maxSpeedInput.value = "";
-  originInput.value = "";
-  weightInput.value = "";
-}
-
-export function addEmployeeForm(event: Event) {
-  event.preventDefault();
-
-  const occupationInput = document.getElementById(
-    "employee-occupation",
-  ) as HTMLInputElement;
-  const zooCheckbox = document.getElementById(
-    "employee-zoo",
-  ) as HTMLInputElement;
-  const safetyCheckbox = document.getElementById(
-    "employee-safety",
-  ) as HTMLInputElement;
-  const dateInput = document.getElementById(
-    "employee-date",
-  ) as HTMLInputElement;
-
-  const occupation = occupationInput.value;
-  const isEmployeeAtZoo = zooCheckbox.checked;
-  const safetyTrainingCompletion = safetyCheckbox.checked;
-  const safetyTrainingCompletionDate = dateInput.value;
-
-  const newEmployee = new Zookeeper({
-    employeeOccupation: occupation,
-    isEmployeeAtZoo: isEmployeeAtZoo,
-    safetyTrainingCompletion: safetyTrainingCompletion,
-    safetyTrainingCompletionDate: safetyTrainingCompletionDate,
-  });
-
-  employees.addEmployee(newEmployee);
-
-  console.log("New employee added:", newEmployee);
-  console.log(employees.getAllEmployees());
-
-  occupationInput.value = "";
-  zooCheckbox.checked = false;
-  safetyCheckbox.checked = false;
-  dateInput.value = "";
-}
-
-addEmployeeButton.addEventListener("click", addEmployeeForm);
+//
 
 addAnimalButton.addEventListener("click", addAnimalForm);
+addEmployeeButton.addEventListener("click", addEmployeeForm);
+
 typeSelect.addEventListener("change", () => {
   const selectedValue = typeSelect.value;
   handleDisplay(selectedValue);
 });
+
+logAnimalButton.addEventListener("click", () => {
+  const logAnimals = animals.getAllAnimals();
+  console.log(logAnimals);
+});
+
+logEmployeeButton.addEventListener("click", () => {
+  const logEmployees = employees.getAllEmployees();
+  console.log(logEmployees);
+});
+
+export const logger = Logger.getInstance();
+
+const animalLogs = logger.getAnimalLogs();
+console.log(animalLogs);
+
+const employeeLogs = logger.getEmployeeLogs();
+console.log(employeeLogs);

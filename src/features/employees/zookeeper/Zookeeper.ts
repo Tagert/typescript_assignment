@@ -28,6 +28,7 @@ export class Zookeeper extends Employee {
     const feedingTime = new Date().toLocaleString("lt-LT", {
       timeZone: "Europe/Vilnius",
     });
-    console.log(`Zookeeper fed ${animal.name} at ${feedingTime}.`);
+
+    console.log(`Zookeeper fed a ${animal.name} at ${feedingTime}.`);
   }
 }

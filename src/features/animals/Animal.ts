@@ -10,11 +10,4 @@ export abstract class Animal implements AnimalType, AnimalTypeMethods {
   }
 
   abstract makeSound(): void;
-
-  // getAnimal() {
-  //   return {
-  //     name: this.name,
-  //     age: this.age,
-  //   };
-  // }
 }

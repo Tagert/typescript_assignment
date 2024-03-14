@@ -1,7 +1,7 @@
 import { Animal } from "./Animal";
 
 export class Animals {
-  private animalsList: Animal[];
+  animalsList: Animal[];
 
   constructor() {
     this.animalsList = [];
