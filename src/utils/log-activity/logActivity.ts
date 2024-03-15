@@ -1,4 +1,4 @@
-import { logEventDiv } from "./dom";
+import { logEventDiv } from "../dom/htmlConstants";
 
 export const addLogMessageToScreen = (message: string) => {
   const logMessageParagraph = document.createElement("p");

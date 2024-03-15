@@ -1,13 +1,11 @@
-import { Employees } from "../features/employees/Employees";
-import { Zookeeper } from "../features/employees/zookeeper/Zookeeper";
+import { Employees } from "../../features/employees/Employees";
+import { Zookeeper } from "../../features/employees/zookeeper/Zookeeper";
 
-import { addEmployeeToScreen } from "./dom";
+import { addEmployeeToScreen } from "../dom/dom";
 
 export const employees = new Employees();
 
-export const addEmployeeForm = (event: Event) => {
-  event.preventDefault();
-
+export const addEmployeeForm = () => {
   const occupationInput = document.getElementById(
     "employee-occupation",
   ) as HTMLInputElement;

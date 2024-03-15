@@ -1,5 +1,5 @@
-import { logMessagesAnimalDiv } from "./dom";
-import { logMessagesEmployeeDiv } from "./dom";
+import { logMessagesAnimalDiv } from "../dom/htmlConstants";
+import { logMessagesEmployeeDiv } from "../dom/htmlConstants";
 
 export class Logger {
   private static instance: Logger;
@@ -44,3 +44,5 @@ export class Logger {
     return this.employeeLogs;
   }
 }
+
+export const logger = Logger.getInstance();

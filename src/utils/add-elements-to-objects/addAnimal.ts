@@ -1,17 +1,15 @@
-import { Animals } from "../features/animals/Animals";
+import { Animals } from "../../features/animals/Animals";
 
-import { JumpRunAnimal } from "../features/animals/groups-animals//JumpRunAnimal";
-import { SleepWalkAnimal } from "../features/animals/groups-animals/SleepWalkAnimal";
-import { SwimHuntAnimal } from "../features/animals/groups-animals/SwimHuntAnimal";
+import { JumpRunAnimal } from "../../features/animals/groups-animals/JumpRunAnimal";
+import { SleepWalkAnimal } from "../../features/animals/groups-animals/SleepWalkAnimal";
+import { SwimHuntAnimal } from "../../features/animals/groups-animals/SwimHuntAnimal";
 
-import { addAnimalToScreen } from "./dom";
-import { typeSelect } from "../main";
+import { addAnimalToScreen } from "../dom/dom";
+import { typeSelect } from "../dom/htmlConstants";
 
 export const animals = new Animals();
 
-export const addAnimalForm = (event: Event) => {
-  event.preventDefault();
-
+export const addAnimalForm = () => {
   const nameInput = document.getElementById("animal-name") as HTMLInputElement;
   const ageInput = document.getElementById("animal-age") as HTMLInputElement;
   const maxSpeedInput = document.getElementById(

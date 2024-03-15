@@ -1,63 +1,30 @@
-import { Animal } from "./features/animals/Animal";
+import {
+  addAnimalButton,
+  addEmployeeButton,
+  typeSelect,
+  logAnimalButton,
+  logEmployeeButton,
+} from "./utils/dom/htmlConstants";
 
-import { Zebra } from "./features/animals/exists-in-zoo/Zebra";
-import { Elephant } from "./features/animals/exists-in-zoo/Elephant";
-import { Tiger } from "./features/animals/exists-in-zoo/Tiger";
+import {
+  addAnimalForm,
+  animals,
+} from "./utils/add-elements-to-objects/addAnimal";
+import {
+  addEmployeeForm,
+  employees,
+} from "./utils/add-elements-to-objects/addEmployee";
 
-import { addAnimalForm, animals } from "./utils/addAnimal";
-import { addEmployeeForm, employees } from "./utils/addEmployee";
+import { handleDisplay } from "./utils/dom/dom";
 
-import { handleDisplay } from "./utils/dom";
-import { Zookeeper } from "./features/employees/zookeeper/Zookeeper";
+import { logger } from "./utils/log-activity/Logger";
 
-import { Logger } from "./utils/Logger";
-import { Employee } from "./features/employees/Employee";
-
-const addAnimalButton = document.getElementById(
-  "animal-btn",
-) as HTMLButtonElement;
-const addEmployeeButton = document.getElementById(
-  "employee-btn",
-) as HTMLButtonElement;
-
-const logAnimalButton = document.getElementById(
-  "log-animal-btn",
-) as HTMLButtonElement;
-const logEmployeeButton = document.getElementById(
-  "log-employee-btn",
-) as HTMLButtonElement;
-
-export const typeSelect = document.getElementById(
-  "animal-type",
-) as HTMLSelectElement;
-
-const zebra = new Zebra({
-  name: "Zebra",
-  age: 5,
-  maxSpeed: 40,
-  origin: "Africa",
-});
-const elephant = new Elephant({ name: "Elephant", age: 10, weight: 4500 });
-const tiger = new Tiger({ name: "Tiger", age: 6, statusMoreThan8Hours: false });
-
-export const existsAnimals: Animal[] = [zebra, elephant, tiger];
+import { existsEmployees } from "./features/employees/existsEmployees";
+import { existsAnimals } from "./features/animals/existsAnimals";
 
 console.log(existsAnimals);
 
-export const zooKeeper = new Zookeeper({
-  employeeOccupation: "Zookeeper",
-  isEmployeeAtZoo: true,
-  safetyTrainingCompletion: true,
-  safetyTrainingCompletionDate: "2008-08-10",
-});
-
-export const existsEmployees: Employee[] = [zooKeeper];
-
 console.log(existsEmployees);
-
-zooKeeper.feedAnimal(tiger);
-
-//
 
 addAnimalButton.addEventListener("click", addAnimalForm);
 addEmployeeButton.addEventListener("click", addEmployeeForm);
@@ -76,8 +43,6 @@ logEmployeeButton.addEventListener("click", () => {
   const logEmployees = employees.getAllEmployees();
   console.log(logEmployees);
 });
-
-export const logger = Logger.getInstance();
 
 const animalLogs = logger.getAnimalLogs();
 console.log(animalLogs);
